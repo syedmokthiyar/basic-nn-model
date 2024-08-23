@@ -14,32 +14,25 @@ A neural network is a computer program inspired by how our brains work. It's use
 
 ## DESIGN STEPS
 
-### STEP 1:
-
+## STEP 1:
 Loading the dataset
 
-### STEP 2:
-
+## STEP 2:
 Split the dataset into training and testing
 
-### STEP 3:
-
+## STEP 3:
 Create MinMaxScalar objects ,fit the model and transform the data.
 
-### STEP 4:
-
+## STEP 4:
 Build the Neural Network Model and compile the model.
 
-### STEP 5:
-
+## STEP 5:
 Train the model with the training data.
 
-### STEP 6:
-
+## STEP 6:
 Plot the performance plot
 
-### STEP 7:
-
+## STEP 7:
 Evaluate the model with the testing data.
 
 ## PROGRAM
@@ -101,23 +94,19 @@ x_n1_1 = Scaler.transform(x_n1)
 ai_brain.predict(x_n1_1)
 
 ```
-## Dataset Information
 
+## Dataset Information
 ![Screenshot 2024-08-23 082326](https://github.com/user-attachments/assets/e171a9c9-77a9-4573-ae64-fb7f26bb349d)
 
-## OUTPUT
+### OUTPUT
 
-### Training Loss Vs Iteration Plot
-
+## Training Loss Vs Iteration Plot
 ![Screenshot 2024-08-23 085725](https://github.com/user-attachments/assets/030070cb-9f5f-4073-9972-75c4fd29610b)
 
-
-### Test Data Root Mean Squared Error
-
+## Test Data Root Mean Squared Error
 ![Screenshot 2024-08-23 085822](https://github.com/user-attachments/assets/f15b7a7a-bd06-4d96-a935-8e4903d91535)
 
-### New Sample Data Prediction
-
+## New Sample Data Prediction
 ![Screenshot 2024-08-23 085853](https://github.com/user-attachments/assets/4fa3c7ec-1024-4a0c-9141-71a650b8f147)
 
 ## RESULT
