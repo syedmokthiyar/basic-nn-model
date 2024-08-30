@@ -10,7 +10,7 @@ A neural network is a computer program inspired by how our brains work. It's use
 
 ## Neural Network Model
 
-![Screenshot 2024-08-23 090130](https://github.com/user-attachments/assets/2896e156-7400-4a20-8f3d-2a97e70c04b1)
+![55](https://github.com/user-attachments/assets/07719be9-b699-45f3-a3a9-7e281538c015)
 
 ## DESIGN STEPS
 
