@@ -52,46 +52,52 @@ from google.colab import auth
 import gspread
 from google.auth import default
 
+!pip install --upgrade gspread
+
 from google.colab import auth
 import gspread
 from google.auth import default
-import pandas as pd  
 
 auth.authenticate_user()
-creds, _ = default()
+creds,_=default()
 gc = gspread.authorize(creds)
-worksheet = gc.open('Deeplearning').sheet1
+
+worksheet = gc.open('deep learning').sheet1
+
 data = worksheet.get_all_values()
+
 dataset1 = pd.DataFrame(data[1:], columns=data[0])
-dataset1 = dataset1.astype({'Input': 'int', 'Output': 'int'})
+dataset1 = dataset1.astype({'input':'int'})
+dataset1 = dataset1.astype({'Output':'int'})
+
+dataset1.head() 
+
 dataset1.head()
-
-x = dataset1[['Input']].values
+X = dataset1[['input']].values
 y = dataset1[['Output']].values
+X
 
-x_train,x_test,y_train,y_test = train_test_split(x,y,test_size=0.33,random_state=33)
-
+X_train,X_test,y_train,y_test = train_test_split(X,y,test_size = 0.3,random_state = 33)
 Scaler = MinMaxScaler()
-Scaler.fit(x_train)
-x_train1 = Scaler.transform(x_train)
+Scaler.fit(X_train)
 
-ai_brain = Sequential([
-    Dense(8,activation = 'relu'),
-    Dense(10,activation = 'relu'),
-    Dense(1)
-])
-
-ai_brain.compile(optimizer = 'rmsprop', loss = 'mse')
-ai_brain.fit(x_train1,y_train,epochs = 2000)
-
+MinMaxScaler()
+X_train1 = Scaler.transform(X_train)
+ai_brain=Sequential([Dense(units=3,input_shape=[1]),Dense(units=3),Dense(units=1)])
+ai_brain.compile(optimizer="rmsprop",loss="mae")
+ai_brain.fit(X_train1,y_train,epochs=1000)
 loss_df = pd.DataFrame(ai_brain.history.history)
-loss_df.plot()
-x_test1 = Scaler.transform(x_test)
-ai_brain.evaluate(x_test1,y_test)
-x_n1=[[4]]
-x_n1_1 = Scaler.transform(x_n1)
-ai_brain.predict(x_n1_1)
 
+loss_df.plot()
+X_test1 = Scaler.transform(X_test)
+ai_brain.evaluate(X_test1,y_test)
+X_n1 = [[18]]
+X_n1_1 = Scaler.transform(X_n1)
+ai_brain.predict(X_n1_1)
+
+ai_brain.evaluate(X_test1,y_test)
+
+ai_brain.predict(X_n1_1)
 ```
 
 ## Dataset Information
@@ -100,13 +106,13 @@ ai_brain.predict(x_n1_1)
 ### OUTPUT
 
 ## Training Loss Vs Iteration Plot
-![Screenshot 2024-08-23 085725](https://github.com/user-attachments/assets/030070cb-9f5f-4073-9972-75c4fd29610b)
+![Screenshot 2024-08-30 082104](https://github.com/user-attachments/assets/2c9e529b-957e-4012-977a-468f61888578)
 
 ## Test Data Root Mean Squared Error
-![Screenshot 2024-08-23 085822](https://github.com/user-attachments/assets/f15b7a7a-bd06-4d96-a935-8e4903d91535)
+![Screenshot 2024-08-30 082231](https://github.com/user-attachments/assets/b2cd686c-e02f-43a1-9d80-b5c42ab6d272)
 
 ## New Sample Data Prediction
-![Screenshot 2024-08-23 085853](https://github.com/user-attachments/assets/4fa3c7ec-1024-4a0c-9141-71a650b8f147)
+![Screenshot 2024-08-30 082333](https://github.com/user-attachments/assets/b64e9bcc-8c04-476e-a5db-4edf27ab7159)
 
 ## RESULT
 Thus a Neural Network regression model for the given dataset is written and executed successfully
